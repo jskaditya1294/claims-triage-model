@@ -1,0 +1,10 @@
+data/raw/
+data/*.duckdb
+outputs/*.joblib
+__pycache__/
+.pytest_cache/
+
+# Not part of the submission
+share_for_model_review.zip
+Apeiro_Senior_Data_Scientist_Assignment.pdf
+explain_me_bundle.zip

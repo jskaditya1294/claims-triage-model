@@ -1,0 +1,4 @@
+strategy,total_cost,reviews_per_day,saving_vs_no_review
+pay everything (no review),12229092,0.0,0
+review everything (ignores capacity),4158668,174.5,8070424
+model routing,3376299,13.5,8852793

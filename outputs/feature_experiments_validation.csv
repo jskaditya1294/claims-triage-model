@@ -1,0 +1,25 @@
+experiment,n_features,pr_auc_bad,pr_auc_fwa,precision_bad_at_capacity,recall_bad_at_capacity,coverage_ended,duplicate,dx_mismatch,overbilling,provider_day_spike
+0 current features,20,0.6623,0.7504,0.6887,0.6536,1.0,0.936,0.584,0.78,0.747
+A strict provider-day timing,20,0.6593,0.747,0.6864,0.6515,1.0,0.945,0.564,0.768,0.803
++ B dx compatibility,28,0.6557,0.7582,0.6753,0.641,1.0,0.936,0.553,0.752,0.743
++ B2 dx vs sex and age,30,0.6564,0.7597,0.676,0.6416,1.0,0.937,0.557,0.749,0.734
++ C member dx history,36,0.7289,0.7692,0.7965,0.7559,1.0,0.941,0.898,0.822,0.794
++ D amount spread and peers,40,0.7294,0.7741,0.794,0.7535,1.0,0.939,0.903,0.79,0.794
++ D2 amount vs own history,43,0.7285,0.7697,0.7987,0.7581,1.0,0.937,0.898,0.842,0.796
++ E provider volume,46,0.7326,0.7778,0.803,0.7621,1.0,0.949,0.896,0.835,0.838
+only B dx compatibility,28,0.6557,0.7582,0.6753,0.641,1.0,0.936,0.553,0.752,0.743
+only B2 dx vs sex and age,22,0.6574,0.755,0.6781,0.6435,1.0,0.936,0.565,0.752,0.736
+only C member dx history,26,0.7268,0.762,0.7965,0.7559,1.0,0.941,0.892,0.825,0.792
+only D amount spread and peers,24,0.6663,0.7658,0.6887,0.6536,1.0,0.937,0.59,0.763,0.752
+only D2 amount vs own history,23,0.6769,0.7606,0.7102,0.674,1.0,0.939,0.624,0.834,0.765
+only E provider volume,23,0.6623,0.7623,0.6885,0.6534,1.0,0.944,0.567,0.765,0.818
+"all, leave-one-out dx lift",46,0.7314,0.7772,0.803,0.7621,1.0,0.949,0.893,0.847,0.838
+all + receipt lag (generator artifact?),47,0.7352,0.8,0.8042,0.7632,1.0,0.981,0.888,0.822,0.856
+"all, 15 leaves",46,0.7329,0.7811,0.8048,0.7639,1.0,0.945,0.902,0.838,0.843
+"all, 15 leaves, min_child 100",46,0.7316,0.7806,0.8055,0.7645,1.0,0.947,0.902,0.84,0.847
+"all, 300 trees",46,0.7326,0.7775,0.8064,0.7654,1.0,0.947,0.9,0.852,0.843
+"all, logistic regression",46,0.5964,0.6362,0.6273,0.5954,0.565,0.936,0.728,0.599,0.827
+ADOPTED: member dx history + amount vs own history,26,0.7277,0.7638,0.7983,0.7576,1.0,0.937,0.881,0.873,0.796
+adopted + strict provider-day features (generator artifact),28,0.7295,0.7738,0.8005,0.7598,1.0,0.947,0.874,0.866,0.84
+"adopted, 15 leaves",26,0.734,0.7725,0.8053,0.7643,1.0,0.937,0.898,0.879,0.82
+ABLATION: adopted minus the 4 member dx history features,22,0.6651,0.7575,0.6939,0.6586,1.0,0.934,0.593,0.796,0.752

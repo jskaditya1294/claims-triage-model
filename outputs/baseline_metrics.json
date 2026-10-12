@@ -1,0 +1,44 @@
+{
+  "valid": {
+    "metrics": {
+      "claims": 73619.0,
+      "bad_rate": 0.0632,
+      "fwa_rate": 0.0217,
+      "pr_auc_bad": 0.5127,
+      "pr_auc_fwa": 0.5359,
+      "precision_bad_at_capacity": 0.5825,
+      "recall_bad_at_capacity": 0.5529,
+      "precision_fwa_at_capacity": 0.6012,
+      "recall_fwa_at_capacity": 0.5531
+    },
+    "caught_by_pattern": {
+      "coverage_ended": 0.571,
+      "duplicate": 0.929,
+      "dx_mismatch": 0.636,
+      "none": 0.022,
+      "overbilling": 0.502,
+      "provider_day_spike": 0.778
+    }
+  },
+  "test": {
+    "metrics": {
+      "claims": 79380.0,
+      "bad_rate": 0.0588,
+      "fwa_rate": 0.0215,
+      "pr_auc_bad": 0.4999,
+      "pr_auc_fwa": 0.5501,
+      "precision_bad_at_capacity": 0.5661,
+      "recall_bad_at_capacity": 0.5773,
+      "precision_fwa_at_capacity": 0.5892,
+      "recall_fwa_at_capacity": 0.549
+    },
+    "caught_by_pattern": {
+      "coverage_ended": 0.544,
+      "duplicate": 0.936,
+      "dx_mismatch": 0.713,
+      "none": 0.022,
+      "overbilling": 0.526,
+      "provider_day_spike": 0.809
+    }
+  }
+}

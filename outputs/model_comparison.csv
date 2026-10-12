@@ -1,0 +1,15 @@
+model,split,pr_auc_bad,pr_auc_fwa,precision_bad_at_capacity,recall_bad_at_capacity,precision_fwa_at_capacity,recall_fwa_at_capacity,brier_bad
+logistic (balanced weights),valid,0.5127,0.5359,0.5825,0.5529,0.6012,0.5531,0.205
+logistic (balanced weights),test,0.4999,0.5501,0.5661,0.5773,0.5892,0.549,0.1931
+logistic (no weights),valid,0.4774,0.5283,0.4935,0.4684,0.5876,0.5406,0.0422
+logistic (no weights),test,0.4861,0.5402,0.4945,0.5043,0.5703,0.5314,0.0387
+decision tree depth 6 (balanced),valid,0.6214,0.6679,0.7055,0.6695,0.7833,0.7206,0.1411
+decision tree depth 6 (balanced),test,0.6135,0.6491,0.693,0.7066,0.77,0.7176,0.1343
+decision tree depth 6 (no weights),valid,0.6524,0.6503,0.7349,0.6975,0.7602,0.6994,0.027
+decision tree depth 6 (no weights),test,0.6401,0.6529,0.6974,0.7111,0.7927,0.7387,0.0257
+random forest (no weights),valid,0.7196,0.7558,0.7894,0.7492,0.822,0.7562,0.0253
+random forest (no weights),test,0.7045,0.7428,0.7493,0.764,0.8248,0.7686,0.0237
+lightgbm (balanced weights),valid,0.7121,0.7432,0.7847,0.7447,0.8261,0.76,0.1288
+lightgbm (balanced weights),test,0.6979,0.7299,0.7394,0.754,0.816,0.7604,0.1154
+lightgbm (no weights),valid,0.7277,0.7638,0.7983,0.7576,0.8397,0.7725,0.0231
+lightgbm (no weights),test,0.7091,0.7474,0.7459,0.7606,0.8261,0.7698,0.0223

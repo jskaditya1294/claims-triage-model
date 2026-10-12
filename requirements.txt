@@ -1,0 +1,11 @@
+duckdb
+pandas
+numpy
+scikit-learn
+lightgbm
+shap
+joblib
+fastapi
+uvicorn
+httpx
+pytest

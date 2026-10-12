@@ -1,0 +1,8 @@
+,coverage_ended,duplicate,dx_mismatch,none,overbilling,provider_day_spike
+logistic (balanced weights),0.544,0.936,0.713,0.022,0.526,0.809
+logistic (no weights),0.41,0.786,0.729,0.027,0.229,0.778
+decision tree depth 6 (balanced),0.948,0.933,0.831,0.013,0.813,0.807
+decision tree depth 6 (no weights),1.0,0.937,0.865,0.013,0.746,0.724
+random forest (no weights),1.0,0.942,0.945,0.009,0.892,0.831
+lightgbm (balanced weights),1.0,0.942,0.911,0.009,0.902,0.833
+lightgbm (no weights),1.0,0.94,0.931,0.009,0.905,0.829

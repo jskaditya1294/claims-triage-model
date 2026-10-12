@@ -1,0 +1,10 @@
+PASS  check_1_no_label_columns_in_feature_code
+      forbidden names found: none
+PASS  check_2_features_do_not_change_when_the_future_is_deleted
+      14,279 claims on 8 received dates, 0 feature values changed
+PASS  check_3_reference_tables_only_use_claims_received_before_cutoff
+      0 differing rows; 0 training claims received on or after the cutoff
+PASS  check_4_splits_do_not_overlap
+      0 repeated claims; train 2015-03-13 to 2020-12-31, valid 2021-01-01 to 2021-12-31, test 2022-01-01 to 2023-03-31
+PASS  check_5_sanity_shuffled_labels_give_no_skill
+      validation PR-AUC 0.089 with shuffled labels; random would be 0.063
