@@ -119,19 +119,17 @@ Outputs are written to `outputs/`: model comparison, label summary, cost compari
 
 ## Improvement experiments
 
-The first version scored 65% precision and 67% recall at capacity. I then tested six candidate feature blocks, on train and validation only:
+Candidate feature blocks were tested on train and validation only. Results are in `outputs/feature_experiments_validation.csv`.
 
 ```bash
 python experiments/run_feature_experiments.py
 ```
 
-It builds the candidate features from `experiments/candidate_features.sql` and writes `outputs/feature_experiments_validation.csv`.
+- **Adopted:** member diagnosis history, and billed amount against the member's and provider's own history.
+- **Left out (no gain, or under one point):** smoothed diagnosis lift, diagnosis against age and sex, price-spread features, larger trees.
+- **Rejected as artifacts of the data generator:** strict-timing provider-day volume and receipt lag.
 
-- **Adopted:** member diagnosis history and billed amount against the member's and provider's own history.
-- **No gain or under one point, left out:** smoothed diagnosis lift, diagnosis against age and sex, price-spread features, larger trees, a binary objective (a one-off check, not in the script).
-- **Rejected as artifacts of my data generator:** strict-timing provider-day volume and receipt lag.
-
-**Controlled ablation.** Retraining the final model without exactly the four member diagnosis history features drops validation precision at capacity from 80% to 69% and recall from 76% to 66%. So most of the gain comes from them, and the note explains why the synthetic data flatters them. `outputs/new_diagnosis_check_validation.csv` measures their false-alarm cost: 7.0% of the 2,086 non-injected claims with a diagnosis new to the member are selected, against 0.4% of the 56,072 where it is not new.
+**Ablation.** Retraining without the four member diagnosis history features drops validation precision at capacity from 80% to 69% and recall from 76% to 66%. The note explains why the synthetic data flatters them.
 
 ## Leakage audit
 
@@ -142,16 +140,12 @@ python experiments/leakage_audit.py
 Five checks, all passing (`outputs/leakage_audit.txt`):
 
 1. The feature code never references the label columns.
-2. Point-in-time: features for 14,279 claims are identical when recomputed with every later-received claim deleted.
-3. Reference tables match a rebuild from claims received before the cutoff, and no training claim was received after it.
+2. Features for 14,279 claims are identical when recomputed with every later-received claim deleted.
+3. Reference tables match a rebuild from claims received before the cutoff.
 4. Splits do not overlap and are in order of received date.
-5. Sanity check: training on shuffled labels gives validation PR-AUC 0.089 against 0.063 for random and 0.728 for the real model. This catches pipeline bugs; it does not by itself rule out leakage.
+5. Sanity check: shuffled labels give validation PR-AUC 0.089, against 0.063 for random and 0.728 for the real model.
 
-What the audit does not show:
-
-- It covers timing, not realism. A feature can pass and still be flattered by the synthetic data.
-- The point-in-time check keeps the stored reference tables and member data; check 3 and `tests/test_timing.py` cover those.
-- Test-set numbers were printed during development. Model, feature and threshold choices were made on validation, but the test set is not a pristine holdout.
+The audit covers timing, not realism. Test-set numbers were printed during development, so the test set is not a pristine holdout.
 
 ## Assumptions
 

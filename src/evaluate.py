@@ -9,9 +9,10 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import average_precision_score
 
-# Assumed capacity: reviewers can look at 6% of claims, senior reviewers at 2%.
-REVIEW_CAPACITY = 0.06
-HIGH_RISK_CAPACITY = 0.02
+# Fixed evaluation point for comparing models: the top 6% by bad-claim score and
+# the top 2% by FWA score. Routing capacity (config.py) is a separate setting.
+EVAL_REVIEW_SHARE = 0.06
+EVAL_HIGH_RISK_SHARE = 0.02
 
 
 def top_share(score, share):
@@ -36,8 +37,8 @@ def evaluate(data, proba):
     bad_score = 1 - proba[:, 0]     # probability the claim is not clean
     fwa_score = proba[:, 2]
 
-    reviewed = top_share(bad_score, REVIEW_CAPACITY)
-    high_risk = top_share(fwa_score, HIGH_RISK_CAPACITY)
+    reviewed = top_share(bad_score, EVAL_REVIEW_SHARE)
+    high_risk = top_share(fwa_score, EVAL_HIGH_RISK_SHARE)
 
     metrics = {
         "claims": len(data),

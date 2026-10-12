@@ -18,7 +18,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 import config as cfg                      # noqa: E402
-from evaluate import REVIEW_CAPACITY, evaluate, top_share   # noqa: E402
+from evaluate import EVAL_REVIEW_SHARE, evaluate, top_share   # noqa: E402
 from model_utils import CATEGORICAL, NUMERIC as FINAL_NUMERIC  # noqa: E402
 
 # The features the first version of the model had, before these experiments.
@@ -80,7 +80,7 @@ def new_diagnosis_false_alarms(train, valid):
     model = Pipeline([("prepare", prepare), ("classifier", LGBMClassifier(**LGBM))])
     model.fit(train[FINAL_NUMERIC + CATEGORICAL], train["label"])
     proba = model.predict_proba(valid[FINAL_NUMERIC + CATEGORICAL])
-    selected = top_share(1 - proba[:, 0], REVIEW_CAPACITY)
+    selected = top_share(1 - proba[:, 0], EVAL_REVIEW_SHARE)
 
     has_history = (valid["injected_pattern"] == "none") & (valid["member_claims_365d"] >= 3)
     is_new = valid["member_same_dx_share"] == 0

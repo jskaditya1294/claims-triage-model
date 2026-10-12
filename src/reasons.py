@@ -14,7 +14,6 @@ import numpy as np
 from model_utils import CATEGORICAL
 
 
-
 def amount_comparisons(claim):
     """Benchmarks that the billed amount exceeds by 1.5 times or more."""
     benchmarks = [
